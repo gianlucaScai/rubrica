@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Indirizzo extends Recapito{
-	private static Map<String,Object> mapIndirizzo = new HashMap<String,Object>();
+	private Map<String,Object> mapIndirizzo = new HashMap<String,Object>();
 	
 	private String indirizzo;
 
@@ -24,12 +24,12 @@ public class Indirizzo extends Recapito{
 		this.indirizzo = indirizzo;
 	}
 
-	public static Map<String, Object> getMapIndirizzo() {
+	public Map<String, Object> getMapIndirizzo() {
 		return mapIndirizzo;
 	}
 
-	public static void setMapIndirizzo(Map<String, Object> mapIndirizzo) {
-		Indirizzo.mapIndirizzo = mapIndirizzo;
+	public void setMapIndirizzo(Map<String, Object> mapIndirizzo) {
+		this.mapIndirizzo = mapIndirizzo;
 	}
 	
 	
@@ -41,7 +41,7 @@ public class Indirizzo extends Recapito{
 		System.out.println("indirizzo: ");
 		String indirizzo = "";
 		while(indirizzo.equals("")){
-			indirizzo = scanner.nextLine();
+			indirizzo = getScanner().nextLine();
 		}
 		this.indirizzo = indirizzo;
 		this.mapIndirizzo.put(key, this.indirizzo);
@@ -69,8 +69,11 @@ public class Indirizzo extends Recapito{
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapIndirizzo.isEmpty()){
+			System.out.println("non sono presenti indirizzi");
+		}else{
 		System.out.println(this.mapIndirizzo.keySet());
+		}
 		
 	}
 

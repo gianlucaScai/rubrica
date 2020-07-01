@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Username extends Social{
-	private static Map<String,Object> mapUsername = new HashMap<String,Object>();
+	private Map<String,Object> mapUsername = new HashMap<String,Object>();
 	
 	private String username;
 
@@ -17,11 +17,12 @@ public class Username extends Social{
 	}
 
 	
-	public static Map<String, Object> getMapUsername() {
+
+	public Map<String, Object> getMapUsername() {
 		return mapUsername;
 	}
-	public static void setMapUsername(Map<String, Object> mapUsername) {
-		Username.mapUsername = mapUsername;
+	public void setMapUsername(Map<String, Object> mapUsername) {
+		this.mapUsername = mapUsername;
 	}
 	public String getUsername() {
 		return username;
@@ -31,13 +32,13 @@ public class Username extends Social{
 	}
 	@Override
 	public void inserimento() {
-		String key = getNome().concat(getCognome());	
+		String key = getNome().concat(getCognome());
 		
 		System.out.println("quale è l' username? \n");
 		System.out.println("username: ");
 		String username = "";
 		while(username.equals("")){
-			username = scanner.nextLine();
+			username = getScanner().nextLine();
 		}
 		this.username = username;
 		this.mapUsername.put(key, this.username);
@@ -65,8 +66,11 @@ public class Username extends Social{
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapUsername.isEmpty()){
+			System.out.println("non sono presenti username");
+		}else{
 		System.out.println(this.mapUsername.keySet());
+		}
 		
 	}
 

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class NumeroFisso extends Telefono{
 	
-	private static Map<String,List<Number>> mapNumeroFisso = new HashMap<String,List<Number>>();
+	private Map<String,List<Number>> mapNumeroFisso = new HashMap<String,List<Number>>();
 	private Number numeroFisso;
 
 	public Number getNumeroFisso() {
@@ -20,12 +20,12 @@ public class NumeroFisso extends Telefono{
 
 
 
-	public static Map<String, List<Number>> getMapNumeroFisso() {
+	public Map<String, List<Number>> getMapNumeroFisso() {
 		return mapNumeroFisso;
 	}
 
-	public static void setMapNumeroFisso(Map<String, List<Number>> mapNumeroFisso) {
-		NumeroFisso.mapNumeroFisso = mapNumeroFisso;
+	public void setMapNumeroFisso(Map<String, List<Number>> mapNumeroFisso) {
+		this.mapNumeroFisso = mapNumeroFisso;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class NumeroFisso extends Telefono{
 
 		System.out.println("quale è il numero fisso? \n");
 		System.out.println("numero fisso: ");
-		this.numeroFisso = scanner.nextLong();
+		this.numeroFisso = getScanner().nextLong();
 		
 		if(!mapNumeroFisso.containsKey(key)){
 			this.mapNumeroFisso.put(key,new ArrayList<Number>());
@@ -66,8 +66,12 @@ public class NumeroFisso extends Telefono{
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapNumeroFisso.isEmpty()){
+			System.out.println("non sono numeri fissi");
+		}else{
 		System.out.println(this.mapNumeroFisso.keySet());
+		}
+		
 		
 	}
 	

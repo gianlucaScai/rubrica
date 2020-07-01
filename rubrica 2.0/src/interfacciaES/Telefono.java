@@ -1,15 +1,11 @@
 package interfacciaES;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 public class Telefono extends Contatto{
+	private static NumeroCellulare numeroCellulare =  new NumeroCellulare();
+	private static NumeroFisso numeroFisso = new NumeroFisso();
+	private static NumeroAziendale numeroAziendale = new NumeroAziendale();
 	
-
 	public Telefono() {
-		super();
 	}
 
 	@Override
@@ -22,21 +18,18 @@ public class Telefono extends Contatto{
 				esc = true;
 				break;
 			case 1:
-				NumeroCellulare numeroCellulare = new NumeroCellulare();
 				numeroCellulare.setNome(getNome());
 				numeroCellulare.setCognome(getCognome());
 				numeroCellulare.inserimento();
 
 				break;
 			case 2:
-				NumeroFisso numeroFisso = new NumeroFisso();
 				numeroFisso.setNome(getNome());
 				numeroFisso.setCognome(getCognome());
 				numeroFisso.inserimento();
 
 				break;
 			case 3:
-				NumeroAziendale numeroAziendale = new NumeroAziendale();
 				numeroAziendale.setNome(getNome());
 				numeroAziendale.setCognome(getCognome());
 				numeroAziendale.inserimento();
@@ -51,9 +44,6 @@ public class Telefono extends Contatto{
 
 	@Override
 	public void visualizzazione() {
-		NumeroCellulare numeroCellulare = new NumeroCellulare();
-		NumeroAziendale numeroAziendale = new NumeroAziendale();
-		NumeroFisso numeroFisso = new NumeroFisso();
 
 		numeroCellulare.setNome(getNome());
 		numeroCellulare.setCognome(getCognome());
@@ -69,17 +59,13 @@ public class Telefono extends Contatto{
   }	
 	@Override
 	public void findAll(){
-		NumeroCellulare numeroCellulare = new NumeroCellulare();
-		NumeroAziendale numeroAziendale = new NumeroAziendale();
-		NumeroFisso numeroFisso = new NumeroFisso();
-
 		numeroCellulare.setNome(getNome());
 		numeroCellulare.setCognome(getCognome());
 		numeroFisso.setNome(getNome());
 		numeroFisso.setCognome(getCognome());
 		numeroAziendale.setNome(getNome());
 		numeroAziendale.setCognome(getCognome());
-
+		
 		numeroCellulare.findAll();
 		numeroFisso.findAll();
 		numeroAziendale.findAll();
@@ -88,10 +74,6 @@ public class Telefono extends Contatto{
 	
 	@Override
 	public void elimina(){
-		NumeroCellulare numeroCellulare = new NumeroCellulare();
-		NumeroAziendale numeroAziendale = new NumeroAziendale();
-		NumeroFisso numeroFisso = new NumeroFisso();
-
 		numeroCellulare.setNome(getNome());
 		numeroCellulare.setCognome(getCognome());
 		numeroFisso.setNome(getNome());
@@ -106,13 +88,13 @@ public class Telefono extends Contatto{
 	}
 
 	
-	private static int sceltaOperazione() {
+	private int sceltaOperazione() {
 		stampaMenu();
-		int scelta = scanner.nextInt();
+		int scelta = getScanner().nextInt();
 		while (scelta < 0 || scelta > 3) {
 			System.out.println("errore.. riprova");
 			stampaMenu();
-			scelta = scanner.nextInt();
+			scelta = getScanner().nextInt();
 		}
 		return scelta;
 	}

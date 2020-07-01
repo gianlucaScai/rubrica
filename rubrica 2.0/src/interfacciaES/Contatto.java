@@ -1,23 +1,12 @@
 package interfacciaES;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public abstract class Contatto {
 	
-	public static Map<String,Object> contattoMap = new HashMap();
-	protected static Map<String,Map<String,Object>> telefonoMap = new HashMap();
-	protected static Map<String,Map<String,Object>> recapitoMap = new HashMap();
-	protected static Map<String,Map<String,Object>> emailMap = new HashMap();
-	protected static Map<String,Map<String,Object>> socialMap = new HashMap();
-
-
-	
 	private String nome;
 	private String cognome;
-    public static Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     
     public Contatto(){
@@ -43,6 +32,14 @@ public abstract class Contatto {
 	}
 
 	
+	public Scanner getScanner() {
+		return scanner;
+	}
+
+	public void setScanner(Scanner scanner) {
+		this.scanner = scanner;
+	}
+
 	public void inserimento() {
 		
 	}

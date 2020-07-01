@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Citta extends Recapito {
-	private static Map<String,Object> mapCitta = new HashMap<String,Object>();
+	private Map<String,Object> mapCitta = new HashMap<String,Object>();
 	
 	public Citta(){
 		super();
@@ -14,15 +14,12 @@ public class Citta extends Recapito {
 		setCognome(cognome);
 	}
 	
-
-	
-	
-	public static Map<String, Object> getMapCitta() {
+	public Map<String, Object> getMapCitta() {
 		return mapCitta;
 	}
 	
-	public static void setMapCitta(Map<String, Object> mapCitta) {
-		Citta.mapCitta = mapCitta;
+	public void setMapCitta(Map<String, Object> mapCitta) {
+		this.mapCitta = mapCitta;
 	}
 
 	private String citta;
@@ -40,7 +37,7 @@ public class Citta extends Recapito {
 		
 		System.out.println("quale è la citta ? \n");
 		System.out.println("citta: ");
-		this.citta = scanner.next();
+		this.citta = getScanner().next();
 		this.mapCitta.put(key, this.citta);
 	}
 	
@@ -66,8 +63,11 @@ public class Citta extends Recapito {
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapCitta.isEmpty()){
+			System.out.println("non sono presenti citta");
+		}else{
 		System.out.println(this.mapCitta.keySet());
+		}
 		
 	}
 }

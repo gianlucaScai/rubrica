@@ -7,11 +7,10 @@ import java.util.Map;
 
 public class NumeroCellulare extends Telefono {
 		
-	private static Map<String,List<Number>> mapNumeroCellulare = new HashMap<String,List<Number>>();
+	private Map<String,List<Number>> mapNumeroCellulare = new HashMap<String,List<Number>>();
 	private Number numeroCellulare;
-
+	
 	public NumeroCellulare(){
-		super();
 	}
 	
 	public Number getNumeroCellulare() {
@@ -21,17 +20,13 @@ public class NumeroCellulare extends Telefono {
 	public void setNumeroCellulare(Number numeroCellulare) {
 		this.numeroCellulare = numeroCellulare;
 	}
-	
 
-
-
-
-	public static Map<String, List<Number>> getMapNumeroCellulare() {
+	public Map<String, List<Number>> getMapNumeroCellulare() {
 		return mapNumeroCellulare;
 	}
 
-	public static void setMapNumeroCellulare(Map<String, List<Number>> mapNumeroCellulare) {
-		NumeroCellulare.mapNumeroCellulare = mapNumeroCellulare;
+	public void setMapNumeroCellulare(Map<String, List<Number>> mapNumeroCellulare) {
+		this.mapNumeroCellulare = mapNumeroCellulare;
 	}
 
 	@Override
@@ -40,7 +35,7 @@ public class NumeroCellulare extends Telefono {
 
 		System.out.println("quale è il numero cellulare? \n");
 			System.out.println("numero cellulare: ");
-			this.numeroCellulare = scanner.nextLong();
+			this.numeroCellulare = getScanner().nextLong();
 			
 			if(!mapNumeroCellulare.containsKey(key)){
 				this.mapNumeroCellulare.put(key,new ArrayList<Number>());
@@ -72,9 +67,11 @@ public class NumeroCellulare extends Telefono {
 	}
 	@Override
 	public void findAll(){
-		
-		String key = getNome().concat(getCognome());
+		if(this.mapNumeroCellulare.isEmpty()){
+			System.out.println("non sono numeri cellulare");
+		}else{
 		System.out.println(this.mapNumeroCellulare.keySet());
+		}
 		
 	}
 

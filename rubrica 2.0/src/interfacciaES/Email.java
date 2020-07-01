@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 public class Email extends Contatto{
-	
+	private static EmailPrivata emailPrivata = new EmailPrivata();
+	private static EmailAziendale emailAziendale = new EmailAziendale();
 	public Map<String,Object> postaElettronicaMap = new HashMap();
 	
 	public Email() {
@@ -23,14 +24,15 @@ public class Email extends Contatto{
 					esc = true;
 					break;
 				case 1:
-					EmailPrivata emailPrivata = new EmailPrivata(getNome(),getCognome());
+					emailPrivata.setNome(getNome());
+					emailPrivata.setCognome(getCognome());
 					emailPrivata.inserimento();
 	
 					break;
 				case 2:
-					EmailAziendale emailAziendale = new EmailAziendale(getNome(),getCognome());
+					emailAziendale.setNome(getNome());
+					emailAziendale.setCognome(getCognome());
 					emailAziendale.inserimento();
-	
 					break;
 				}
 			}
@@ -39,21 +41,23 @@ public class Email extends Contatto{
 	
 	@Override
 	public void visualizzazione() {
-		EmailPrivata emailPrivata = new EmailPrivata(getNome(),getCognome());
-		EmailAziendale emailAziendale = new EmailAziendale(getNome(),getCognome());
+		emailPrivata.setNome(getNome());
+		emailPrivata.setCognome(getCognome());
+		emailAziendale.setNome(getNome());
+		emailAziendale.setCognome(getCognome());
 
 		emailPrivata.visualizzazione();
 		emailAziendale.visualizzazione();
   }	
 
 	
-	private static int sceltaOperazione() {
+	private int sceltaOperazione() {
 		stampaMenu();
-		int scelta = scanner.nextInt();
+		int scelta = getScanner().nextInt();
 		while (scelta < 0 || scelta > 2) {
 			System.out.println("errore.. riprova");
 			stampaMenu();
-			scelta = scanner.nextInt();
+			scelta = getScanner().nextInt();
 		}
 		return scelta;
 	}
@@ -65,8 +69,10 @@ public class Email extends Contatto{
 	
 	@Override
 	public void elimina(){
-		EmailPrivata emailPrivata = new EmailPrivata(getNome(),getCognome());
-		EmailAziendale emailAziendale = new EmailAziendale(getNome(),getCognome());
+		emailPrivata.setNome(getNome());
+		emailPrivata.setCognome(getCognome());
+		emailAziendale.setNome(getNome());
+		emailAziendale.setCognome(getCognome());
 
 		emailPrivata.elimina();
 		emailAziendale.elimina();
@@ -75,8 +81,10 @@ public class Email extends Contatto{
 	
 	@Override
 	public void findAll(){
-		EmailPrivata emailPrivata = new EmailPrivata(getNome(),getCognome());
-		EmailAziendale emailAziendale = new EmailAziendale(getNome(),getCognome());
+		emailPrivata.setNome(getNome());
+		emailPrivata.setCognome(getCognome());
+		emailAziendale.setNome(getNome());
+		emailAziendale.setCognome(getCognome());
 
 		emailPrivata.findAll();
 		emailAziendale.findAll();

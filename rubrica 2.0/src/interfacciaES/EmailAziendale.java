@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class EmailAziendale extends Email{
-	private static Map<String,List<String>> mapEmailAziendale = new HashMap<String,List<String>>();
+	private Map<String,List<String>> mapEmailAziendale = new HashMap<String,List<String>>();
 
 	private String emailAziendale;
 
@@ -30,11 +30,11 @@ public class EmailAziendale extends Email{
 	
 
 
-	public static Map<String, List<String>> getMapEmailAziendale() {
+	public Map<String, List<String>> getMapEmailAziendale() {
 		return mapEmailAziendale;
 	}
-	public static void setMapEmailAziendale(Map<String, List<String>> mapEmailAziendale) {
-		EmailAziendale.mapEmailAziendale = mapEmailAziendale;
+	public void setMapEmailAziendale(Map<String, List<String>> mapEmailAziendale) {
+		this.mapEmailAziendale = mapEmailAziendale;
 	}
 	@Override
 	public void inserimento() {
@@ -43,7 +43,7 @@ public class EmailAziendale extends Email{
 
 		System.out.println("quale è l' email? \n");
 		System.out.println("email aziendale: ");
-		this.emailAziendale = scanner.next();
+		this.emailAziendale = getScanner().next();
 		
 		if(!mapEmailAziendale.containsKey(key)){
 			this.mapEmailAziendale.put(key,new ArrayList<String>());
@@ -79,8 +79,11 @@ public class EmailAziendale extends Email{
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapEmailAziendale.isEmpty()){
+			System.out.println("non sono presenti email aziendali");
+		}else{
 		System.out.println(this.mapEmailAziendale.keySet());
+		}
 		
 	}
 }

@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Cap  extends Recapito{
 	
-	private static Map<String,Object> mapCap = new HashMap<String,Object>();
+	private Map<String,Object> mapCap = new HashMap<String,Object>();
 	private Number cap;
 
 	
@@ -27,12 +27,12 @@ public class Cap  extends Recapito{
 	
 	
 	
-	public static Map<String, Object> getMapCap() {
+	public Map<String, Object> getMapCap() {
 		return mapCap;
 	}
 
-	public static void setMapCap(Map<String, Object> mapCap) {
-		Cap.mapCap = mapCap;
+	public void setMapCap(Map<String, Object> mapCap) {
+		this.mapCap = mapCap;
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class Cap  extends Recapito{
 
 		System.out.println("quale è il cap? \n");
 		System.out.println("cap: ");
-		this.cap = scanner.nextLong();
+		this.cap = getScanner().nextLong();
 		this.mapCap.put(key, this.cap);
 	}
 	
@@ -67,8 +67,11 @@ public class Cap  extends Recapito{
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapCap.isEmpty()){
+			System.out.println("non sono presenti cap");
+		}else{
 		System.out.println(this.mapCap.keySet());
+		}
 		
 	}
 }

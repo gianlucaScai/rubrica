@@ -1,11 +1,10 @@
 package interfacciaES;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class Recapito extends Contatto{
+	private static Indirizzo indirizzo = new Indirizzo();
+	private static Cap cap = new Cap();
+	private static Citta citta = new Citta();
+	
 	
 	public Recapito() {
 		super();
@@ -21,17 +20,20 @@ public class Recapito extends Contatto{
 						esc = true;
 						break;
 					case 1:
-						Indirizzo indirizzo = new Indirizzo(getNome(),getCognome());
+						indirizzo.setNome(getNome());
+						indirizzo.setCognome(getCognome());
 						indirizzo.inserimento();
-		
+						
 						break;
 					case 2:
-						Cap cap = new Cap(getNome(),getCognome());
+						cap.setNome(getNome());
+						cap.setCognome(getCognome());
 						cap.inserimento();
 		
 						break;
 					case 3:
-						Citta citta = new Citta(getNome(),getCognome());
+						citta.setNome(getNome());
+						citta.setCognome(getCognome());
 						citta.inserimento();
 		
 						break;
@@ -39,13 +41,13 @@ public class Recapito extends Contatto{
 			}
 		}
 			
-	private static int sceltaOperazione() {
+	private int sceltaOperazione() {
 				stampaMenu();
-				int scelta = scanner.nextInt();
+				int scelta = getScanner().nextInt();
 				while (scelta < 0 || scelta > 3) {
 					System.out.println("errore.. riprova");
 					stampaMenu();
-					scelta = scanner.nextInt();
+					scelta = getScanner().nextInt();
 				}
 				return scelta;
 			}
@@ -57,24 +59,27 @@ public class Recapito extends Contatto{
 			
 	@Override
 	public void visualizzazione() {
-				Indirizzo indirizzo = new Indirizzo(getNome(),getCognome());
-				Cap cap = new Cap(getNome(),getCognome());
-				Citta citta = new Citta(getNome(),getCognome());
 
+		indirizzo.setNome(getNome());
+		indirizzo.setCognome(getCognome());
+		cap.setNome(getNome());
+		cap.setCognome(getCognome());
+		citta.setNome(getNome());
+		citta.setCognome(getCognome());
 				
-				
-				indirizzo.visualizzazione();
-				cap.visualizzazione();
-				citta.visualizzazione();
+		indirizzo.visualizzazione();
+		cap.visualizzazione();
+		citta.visualizzazione();
 		  }
 			
 	@Override
 	public void elimina(){
-		Indirizzo indirizzo = new Indirizzo(getNome(),getCognome());
-		Cap cap = new Cap(getNome(),getCognome());
-		Citta citta = new Citta(getNome(),getCognome());
-
-		
+		indirizzo.setNome(getNome());
+		indirizzo.setCognome(getCognome());
+		cap.setNome(getNome());
+		cap.setCognome(getCognome());
+		citta.setNome(getNome());
+		citta.setCognome(getCognome());
 		
 		indirizzo.elimina();
 		cap.elimina();
@@ -83,9 +88,12 @@ public class Recapito extends Contatto{
 		}
 	@Override
 	public void findAll(){
-		Indirizzo indirizzo = new Indirizzo(getNome(),getCognome());
-		Cap cap = new Cap(getNome(),getCognome());
-		Citta citta = new Citta(getNome(),getCognome());
+		indirizzo.setNome(getNome());
+		indirizzo.setCognome(getCognome());
+		cap.setNome(getNome());
+		cap.setCognome(getCognome());
+		citta.setNome(getNome());
+		citta.setCognome(getCognome());
 		
 		indirizzo.findAll();
 		cap.findAll();

@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class NumeroAziendale extends Telefono {
 	
-	private static Map<String,List<Number>> mapNumeroAziendale = new HashMap<String,List<Number>>();
+	private Map<String,List<Number>> mapNumeroAziendale = new HashMap<String,List<Number>>();
 	private Number numeroAziendale;
 
 	public Number getNumeroAziendale() {
@@ -20,12 +20,12 @@ public class NumeroAziendale extends Telefono {
 	
 	
 
-	public static Map<String, List<Number>> getMapNumeroAziendale() {
+	public Map<String, List<Number>> getMapNumeroAziendale() {
 		return mapNumeroAziendale;
 	}
 
-	public static void setMapNumeroAziendale(Map<String, List<Number>> mapNumeroAziendale) {
-		NumeroAziendale.mapNumeroAziendale = mapNumeroAziendale;
+	public void setMapNumeroAziendale(Map<String, List<Number>> mapNumeroAziendale) {
+		this.mapNumeroAziendale = mapNumeroAziendale;
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class NumeroAziendale extends Telefono {
 
 		System.out.println("quale è il numero aziendale? \n");
 		System.out.println("numero aziendale: ");
-		this.numeroAziendale = scanner.nextLong();
+		this.numeroAziendale = getScanner().nextLong();
 		
 		if(!mapNumeroAziendale.containsKey(key)){
 			this.mapNumeroAziendale.put(key,new ArrayList<Number>());
@@ -68,8 +68,11 @@ public class NumeroAziendale extends Telefono {
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapNumeroAziendale.isEmpty()){
+			System.out.println("non sono presenti numeri aziendali");
+		}else{
 		System.out.println(this.mapNumeroAziendale.keySet());
+		}
 		
 	}
 }

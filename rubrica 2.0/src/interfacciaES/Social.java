@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Social extends Contatto{
-
+	private static Username username = new Username();
 	
 	public Social() {
 		super();
@@ -27,7 +27,8 @@ public class Social extends Contatto{
 				esc = true;
 				break;
 			case 1:
-				Username username = new Username(getNome(),getCognome());
+				username.setNome(getNome());
+				username.setCognome(getCognome());
 				username.inserimento();
 			}
 		}
@@ -36,31 +37,33 @@ public class Social extends Contatto{
 
 	@Override
 	public void visualizzazione() {
-
-		Username username = new Username(getNome(),getCognome());
+		username.setNome(getNome());
+		username.setCognome(getCognome());
 		username.visualizzazione();
 		  }
 
 	@Override
 	public void elimina(){
 
-		Username username = new Username(getNome(),getCognome());
+		username.setNome(getNome());
+		username.setCognome(getCognome());
 		username.elimina();
 		}
 	
 	@Override
 	public void findAll(){
-		Username username = new Username(getNome(),getCognome());
+		username.setNome(getNome());
+		username.setCognome(getCognome());
 		username.findAll();
 	}
 	
-	private static int sceltaOperazione() {
+	private int sceltaOperazione() {
 		stampaMenu();
-		int scelta = scanner.nextInt();
+		int scelta = getScanner().nextInt();
 		while (scelta < 0 || scelta > 1) {
 			System.out.println("errore.. riprova");
 			stampaMenu();
-			scelta = scanner.nextInt();
+			scelta = getScanner().nextInt();
 		}
 		return scelta;
 	}

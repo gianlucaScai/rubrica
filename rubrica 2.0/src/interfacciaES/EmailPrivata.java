@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 public class EmailPrivata extends Email{
-	private static Map<String,List<String>> mapEmailPrivata = new HashMap<String,List<String>>();
+	private Map<String,List<String>> mapEmailPrivata = new HashMap<String,List<String>>();
 	private String emailPrivata;
 
 	public EmailPrivata(){
@@ -28,11 +28,11 @@ public class EmailPrivata extends Email{
 	
 
 
-	public static Map<String, List<String>> getMapEmailPrivata() {
+	public Map<String, List<String>> getMapEmailPrivata() {
 		return mapEmailPrivata;
 	}
-	public static void setMapEmailPrivata(Map<String, List<String>> mapEmailPrivata) {
-		EmailPrivata.mapEmailPrivata = mapEmailPrivata;
+	public void setMapEmailPrivata(Map<String, List<String>> mapEmailPrivata) {
+		this.mapEmailPrivata = mapEmailPrivata;
 	}
 	@Override
 	public void inserimento() {
@@ -41,7 +41,7 @@ public class EmailPrivata extends Email{
 
 		System.out.println("quale è l' email? \n");
 		System.out.println("email privata: ");
-		this.emailPrivata = scanner.next();
+		this.emailPrivata = getScanner().next();
 		if(!mapEmailPrivata.containsKey(key)){
 			this.mapEmailPrivata.put(key,new ArrayList<String>());
 		}
@@ -75,8 +75,11 @@ public class EmailPrivata extends Email{
 	@Override
 	public void findAll(){
 		
-		String key = getNome().concat(getCognome());
+		if(this.mapEmailPrivata.isEmpty()){
+			System.out.println("non sono presenti email private");
+		}else{
 		System.out.println(this.mapEmailPrivata.keySet());
+		}
 		
 	}
 	
